@@ -4,7 +4,7 @@ public class ArrayUtil {
     public static void main(String[] args) {
         //   1) Տպել բոլոր էլեմենտները իրար կողք, բաժանված պռաբելով։
         int[] numbers = {1, 6, 3, 9, 15, 52, -3, 5, 8};
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < numbers.length; i++) {
             System.out.print(numbers[i] + " ");
         }
         System.out.println();
@@ -24,8 +24,11 @@ public class ArrayUtil {
 
         //   5) Տպել մասիվի ամենափոքր թիվը
         System.out.println();
-
-        System.out.println(numbers[6]);
+        int min = numbers[0];
+        for (int i = 0; i < numbers.length; i++) {
+            if (min > numbers[i]) {min = numbers[i];}
+        }
+        System.out.println("minimum " + min);
 
         //   6) Տպել մասիվի մեջտեղի թիվը, ստուգել որ 2-ից մեծ լինի երկարությունը, եթե փոքր կամ հավասար էղավ,
         //   տպեք որ can't print middle values. եթե զույգ է մասիվի մեջի էլեմենտների թիվը,
