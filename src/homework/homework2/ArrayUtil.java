@@ -3,9 +3,9 @@ package homework.homework2;
 public class ArrayUtil {
     public static void main(String[] args) {
         //   1) Տպել բոլոր էլեմենտները իրար կողք, բաժանված պռաբելով։
-        int[] numbers = {1, 6, 3, 9, 15, 52, -3, 5, 8};
-        for (int i = 0; i < numbers.length; i++) {
-            System.out.print(numbers[i] + " ");
+        int[] numbers = {1, 6, 3, 9, 15, 52, -3, 5, 8, 5};
+        for (int j : numbers) {
+            System.out.print(j + " ");
         }
         System.out.println();
         System.out.println();
@@ -25,8 +25,10 @@ public class ArrayUtil {
         //   5) Տպել մասիվի ամենափոքր թիվը
         System.out.println();
         int min = numbers[0];
-        for (int i = 0; i < numbers.length; i++) {
-            if (min > numbers[i]) {min = numbers[i];}
+        for (int i = 1; i < numbers.length; i++) {
+            if (min > numbers[i]) {
+                min = numbers[i];
+            }
         }
         System.out.println("minimum " + min);
 
@@ -42,19 +44,19 @@ public class ArrayUtil {
 
 
         } else if (numbers.length % 2 == 1) {
+            // 0 = четное // -1 = нечетное для отрицательных // 1 = нечетное для положительных
 
             System.out.println(numbers[numbers.length / 2]);
 
         } else {
-            System.out.println(numbers[(numbers.length / 2) - 1] + numbers[numbers.length / 2]);
+            System.out.println(numbers[(numbers.length / 2) - 1] + ", " + numbers[numbers.length / 2]);
         }
         System.out.println();
 
 //          7) Հաշվել ու տպել մասիվում զույգերի քանակը։
         int x = 0;
-        for (int i = 0; i < numbers.length; i++) {
-
-            if (numbers[i] % 2 == 0) {
+        for (int number : numbers) {
+            if (number % 2 == 0) {
                 x++;
             }
         }
@@ -66,8 +68,8 @@ public class ArrayUtil {
         int y = 0;
 
 
-        for (int i = 0; i < numbers.length; i++) {
-            if (numbers[i] % 2 == 1 || numbers[i] % 2 == -1) {
+        for (int number : numbers) {
+            if (number % 2 == 1 || number % 2 == -1) {
                 y++;
             }
 
@@ -77,8 +79,8 @@ public class ArrayUtil {
 
         //  9) Տպել մասիվում էլեմենտների գումարը։
         int e = 0;
-        for (int i = 0; i < numbers.length; i++) {
-            e = e + numbers[i];
+        for (int number : numbers) {
+            e += number;
         }
         System.out.println("Բոլոր տարրերի գումարը " + e);
 
