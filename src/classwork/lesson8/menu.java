@@ -14,15 +14,16 @@ public class menu {
             System.out.println("      4. do-while");
             System.out.println("      5. for/n");
             System.out.println("Ընտրեք ցանկալի տարրը.");
+
             choice = (char) System.in.read(); }  // нужно чтобы мы могли выбрать пункт
 
         while( choice < '1' || choice > '5'); // нужно чтобы если кто-то нажал цифру вне списка, ему снова напечатали
                                               // начальное меню
-                System.out.println("/n");
+                System.out.println("\n");
 
                 switch(choice) {
                     case '1':
-                        System.out.println("if:/n");
+                        System.out.println("if:");
                         System.out.println(("if(պայման) օպերատոր;"));
                         System.out.println("else օպերատոր");
                         break;
