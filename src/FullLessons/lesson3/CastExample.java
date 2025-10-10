@@ -1,4 +1,4 @@
-package lesson3;
+package FullLessons.lesson3;
 
 public class CastExample {
     public static void main(String[] args) {
