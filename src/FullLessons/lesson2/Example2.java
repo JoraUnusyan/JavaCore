@@ -1,6 +1,4 @@
-package lesson2;
-
-import java.sql.SQLOutput;
+package FullLessons.lesson2;
 
 public class Example2 {
     public static void main(String[] args) {
