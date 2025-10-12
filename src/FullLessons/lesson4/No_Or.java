@@ -1,4 +1,4 @@
-package FullLessons.lesson5;
+package FullLessons.lesson4;
 
 public class No_Or {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package FullLessons.lesson6;
+package FullLessons.lesson5;
 
 public class NestedSwitch {
 

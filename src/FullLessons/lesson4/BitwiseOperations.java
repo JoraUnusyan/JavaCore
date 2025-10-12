@@ -1,4 +1,4 @@
-package FullLessons.lesson5;
+package FullLessons.lesson4;
 
 public class BitwiseOperations {
     public static void main(String[] args) {

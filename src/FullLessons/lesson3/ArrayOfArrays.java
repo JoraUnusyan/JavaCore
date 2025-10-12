@@ -1,4 +1,4 @@
-package FullLessons.lesson4;
+package FullLessons.lesson3;
 
 public class ArrayOfArrays {
     public static void main(String[] args) {
