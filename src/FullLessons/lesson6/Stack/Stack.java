@@ -1,33 +1,38 @@
 package FullLessons.lesson6.Stack;
 
+
 public class Stack {
-    int arraylength;
-    int stArray[];
-    int tos;
+    int array[] = new int[10];
+    public int tos;
 
-    Stack(int arraylength) {
-        tos = -1;     //-1 massivi skzbnakan indexne, aysinqn index chka -1-i depkum, L@ ban chka qcac
-        this.arraylength = arraylength;  //masivi length-@ vornor bdi stanank obyekt@ stexceluc
-        stArray = new int[arraylength];  //kudank masivin erkarucyun@
+    public Stack() {
+        tos = -1;
     }
 
-    void push(int item) {
-        if(tos == arraylength) {               //ete lenucyun@ havasarvik@ mer tvac lenucyan@ masivin uremn full-e
-            System.out.println("Стэк заполнен");
-        } else{
-            stArray[++tos] = item;  //hakarak depkum stArray-i konkret index-i tak k @Ngni mer tvac tiv@; minchev or
-                                    // masiv@ ch lcvi
+    public void push(char item) {
+        if (tos == array.length-1) {
+            extend();
         }
+        array[++tos] = item;
     }
 
-    int pop() {
-        if(tos < 0) {     //ete masiv@ length@ poqre 0-ic uremn mej@ ban chka qcac bnakanabar
-            System.out.println("Стэк не запгружен");
+    private void extend(){
+        int[] superarray = new int[array.length + 10];
+        for (int i = 0; i < array.length; i++) {
+            superarray[i] = array[i];
+        }
+        array = superarray;
+    };
+
+    public int pop() {
+        if (tos < 0) {
             return 0;
         }
-        else{
-         return stArray[tos--];  //ete ka - k veradarcnenk verji index@, u amen ankam tos-- kexni, @dpes hertov k hanenk
+        else {
+            return array[tos--];
         }
     }
+
+
 
 }
