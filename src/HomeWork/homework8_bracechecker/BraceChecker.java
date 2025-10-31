@@ -1,4 +1,4 @@
-package HomeWork.homework8;
+package HomeWork.homework8_bracechecker;
 import FullLessons.lesson6.Stack.Stack;
 
 public class BraceChecker {

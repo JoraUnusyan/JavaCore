@@ -1,4 +1,4 @@
-package HomeWork.homework10;
+package HomeWork.homework10_employee;
 
 public class EmployeeStorage {
     private Employee[] emp = new Employee[10];

@@ -1,4 +1,4 @@
-package HomeWork.homework9;
+package HomeWork.homework9_bookstorage;
 import java.util.Scanner;
 
 public class LibraryDemo {

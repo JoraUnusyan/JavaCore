@@ -1,6 +1,4 @@
-package HomeWork.homework7;
-
-import HomeWork.homework6.DynamicArray;
+package HomeWork.homework7_dynamicarray;
 
 public class DynamicArrayDemo2 {
     public static void main(String[] args) {

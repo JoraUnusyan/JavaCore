@@ -1,4 +1,4 @@
-package HomeWork.homework9;
+package HomeWork.homework9_bookstorage;
 
 public class BookStorage {
     private Book[] books = new Book[10];
