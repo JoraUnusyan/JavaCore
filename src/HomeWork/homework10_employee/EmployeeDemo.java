@@ -78,9 +78,6 @@ public class EmployeeDemo {
         while(start){
             commands();
             String command = scanner.nextLine();
-
-
-
             switch(command){
                 case EXIT:
                     start = false;
@@ -103,10 +100,4 @@ public class EmployeeDemo {
                 case SEARCH_BY_POSITION:
                     searchPosition();
                     break;
-            }
-        }
-
-
-
-    }
-}
+            }}}}
