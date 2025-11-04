@@ -11,9 +11,9 @@ public class ExceptionDemo {
     public static void main(String[] args) {
         try{
             compute(1);
-            compute(20);
+            compute(20); //sxal brnec
         } catch (MyException e){
-            System.out.println("Перехвачено исключение " + e);
+            System.out.println("Перехвачено исключение " + e); //mer override erac@ berav cuyc tvav
         }
     }
 }

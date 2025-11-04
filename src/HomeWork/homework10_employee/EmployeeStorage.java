@@ -30,12 +30,10 @@ public class EmployeeStorage {
                 System.out.println(emp[i]);
                 stop = true;
             }
-            if(stop == false) {
-                System.out.println("Сотрудника с таким ID нет");
-            }
         }
-
-
+        if(stop == false) {
+            System.out.println("Сотрудника с таким ID нет");
+        }
 
     }
 
@@ -47,9 +45,9 @@ public class EmployeeStorage {
                 System.out.println(emp[i]);
                 stop = true;
             }
-            if(stop == false) {
-                System.out.println("Сотрудников из этой компании нет в списке");
-            }
+        }
+        if(stop == false) {
+            System.out.println("Сотрудников из этой компании нет в списке");
         }
     }
 
@@ -59,12 +57,10 @@ public class EmployeeStorage {
         for (int i = 0; i < size; i++) {
             if(name.toLowerCase().equals(emp[i].getName().toLowerCase()) && surname.toLowerCase().equals(emp[i].getSurname().toLowerCase())){
                 System.out.println(emp[i]);
-                stop = true;
+                stop = true;}}
 
-                 }
-            if(stop == false){
-                System.out.println("Сотрудников по такой имени и фамилии нет в списке");
-            }
+        if(stop == false){
+            System.out.println("Сотрудников по такой имени и фамилии нет в списке");
         }
     }
 
@@ -75,9 +71,10 @@ public class EmployeeStorage {
                 System.out.println(emp[i]);
                 stop = true;
             }
-            if(stop == false){
-                System.out.println("Сотрудников на такой должности нет в списке");
-            }
+
+        }
+        if(stop == false){
+            System.out.println("Сотрудников на такой должности нет в списке");
         }
     }
 
