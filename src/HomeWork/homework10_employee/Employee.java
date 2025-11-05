@@ -1,22 +1,24 @@
 package HomeWork.homework10_employee;
 
+import HomeWork.homework10_employee.Enums.PositionLevel;
+
 import java.util.Objects;
 
 public class Employee {
     private String name;
     private String surname;
     private String emplyeeID;
-    private int salary;
+    private String salary;
     private String company;
-    private String position;
+    private PositionLevel positionlvl;
 
-    public Employee(String name, String surname, String emplyeeID, int salary, String company, String position) {
+    public Employee(String name, String surname, String emplyeeID, String salary, String company, PositionLevel position) {
         this.name = name;
         this.surname = surname;
         this.emplyeeID = emplyeeID;
         this.salary = salary;
         this.company = company;
-        this.position = position;
+        this.positionlvl = position;
     }
 
     public Employee(){};
@@ -45,11 +47,11 @@ public class Employee {
         this.emplyeeID = emplyeeID;
     }
 
-    public int getSalary() {
+    public String getSalary() {
         return salary;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(String salary) {
         this.salary = salary;
     }
 
@@ -61,24 +63,24 @@ public class Employee {
         this.company = company;
     }
 
-    public String getPosition() {
-        return position;
+    public PositionLevel getPosition() {
+        return positionlvl;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public void setPosition(PositionLevel position) {
+        this.positionlvl = position;
     }
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return salary == employee.salary && Objects.equals(name, employee.name) && Objects.equals(surname, employee.surname) && Objects.equals(emplyeeID, employee.emplyeeID) && Objects.equals(company, employee.company) && Objects.equals(position, employee.position);
+        return salary == employee.salary && Objects.equals(name, employee.name) && Objects.equals(surname, employee.surname) && Objects.equals(emplyeeID, employee.emplyeeID) && Objects.equals(company, employee.company) && Objects.equals(positionlvl, employee.positionlvl);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, emplyeeID, salary, company, position);
+        return Objects.hash(name, surname, emplyeeID, salary, company, positionlvl);
     }
 
     @Override
@@ -89,7 +91,7 @@ public class Employee {
                 ", emplyeeID='" + emplyeeID + '\'' +
                 ", salary=" + salary +
                 ", company='" + company + '\'' +
-                ", position='" + position + '\'' +
+                ", position='" + positionlvl + '\'' +
                 '}';
     }
 }

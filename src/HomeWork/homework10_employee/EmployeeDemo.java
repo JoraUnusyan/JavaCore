@@ -1,5 +1,8 @@
 package HomeWork.homework10_employee;
 
+import HomeWork.homework10_employee.exception.*;
+import HomeWork.homework10_employee.Enums.PositionLevel;
+
 import java.util.Scanner;
 
 public class EmployeeDemo {
@@ -17,7 +20,7 @@ public class EmployeeDemo {
 
 
 
-    private static void addEmployee(){
+    private static void addEmployee() {
         System.out.println("Введите имя сотрудника");
         String name = scanner.nextLine();
         System.out.println("Введите фамилию вашего сотрудника");
@@ -25,25 +28,52 @@ public class EmployeeDemo {
         System.out.println("Введите айди вашего сотрудника");
         String id = scanner.nextLine();
         System.out.println("Введите зарплату вашего сотрудника");
-        int salary = Integer.parseInt(scanner.nextLine());
+        String salary = scanner.nextLine();
         System.out.println("Введите в какой компании работает ваш сотрудник");
         String company = scanner.nextLine();
-        System.out.println("Введите на какой должности работает ваш сотрудник");
-        String positionEmployee = scanner.nextLine();
-        Employee employee = new Employee(name, surname, id, salary, company, positionEmployee);
-        storage.add(employee);
+        System.out.println("Выберите PositionLevel вашего сотрудника");
+        PositionLevel[] save = PositionLevel.values();
+        for (int i = 0; i < save.length; i++) {
+            System.out.println(i + ": " + save[i]);
+        }
+        int lvl;
+        try{
+            lvl = Integer.parseInt(scanner.nextLine());
+            if (lvl < 0 || lvl >= save.length) {
+                throw new ArithmeticException();
+            }
+        } catch(ArithmeticException e)  {
+            System.out.println("Ошибка: Такой должности не существует");
+            return;
+        }
+        PositionLevel position = save[lvl];
+
+        Employee employee = new Employee(name, surname, id, salary, company, position);
+        try {
+            storage.add(employee);
+        } catch (IdDuplicateException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void searchById(){
         System.out.println("Введите id сотрудника");
         String id = scanner.nextLine();
-        storage.idsearch(id);
+        try {
+            storage.idsearch(id);
+        } catch (IdNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void searchNameCompany(){
         System.out.println("Введите имя компании для поиска сотрудников");
         String companyname = scanner.nextLine();
-        storage.searchCompanyName(companyname);
+        try {
+            storage.searchCompanyName(companyname);
+        } catch (CompanyNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void searchName(){
@@ -51,13 +81,34 @@ public class EmployeeDemo {
         String name = scanner.nextLine();
         System.out.println("Введите фамилию вашего сотрудника");
         String surname = scanner.nextLine();
-        storage.searchNameSurname(name, surname);
+        try {
+            storage.searchNameSurname(name, surname);
+        } catch (NameNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void searchPosition(){
-        System.out.println("Введите должность сотрудника");
-        String position = scanner.nextLine();
-        storage.positionsearch(position);
+        System.out.println("Выберите должность для поиска:");
+        PositionLevel[] levels = PositionLevel.values();
+        for (int i = 0; i < levels.length; i++) {
+            System.out.println(i + ": " + levels[i]);
+        }
+
+        int lvl;
+        try {
+            lvl = Integer.parseInt(scanner.nextLine());
+            if (lvl < 0 || lvl >= levels.length) {
+                System.out.println("Ошибка! Такой должности нет.");
+            }
+            PositionLevel position = levels[lvl];
+            storage.positionsearch(position);
+        } catch (NumberFormatException e) {
+            System.out.println("Ошибка! Нужно ввести число.");
+        } catch (PoisitionNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
     private static void commands(){

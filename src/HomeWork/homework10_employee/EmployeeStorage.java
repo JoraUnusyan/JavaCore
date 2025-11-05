@@ -1,10 +1,18 @@
 package HomeWork.homework10_employee;
 
+import HomeWork.homework10_employee.Enums.PositionLevel;
+import HomeWork.homework10_employee.exception.*;
+
 public class EmployeeStorage {
     private Employee[] emp = new Employee[10];
     private int size = 0;
 
-    public void add(Employee employ){
+    public void add(Employee employ) throws IdDuplicateException {
+        for (int i = 0; i < size; i++) {
+            if(emp[i].getEmplyeeID().toLowerCase().equals(employ.getEmplyeeID().toLowerCase())) {
+                throw new IdDuplicateException();
+            }
+        }
         if(size == emp.length){
             extend();
         }
@@ -23,7 +31,7 @@ public class EmployeeStorage {
         }
     }
 
-    public void idsearch(String id){
+    public void idsearch(String id) throws IdNotFoundException {
         boolean stop = false;
         for (int i = 0; i < size; i++) {
             if(id.toLowerCase().equals(emp[i].getEmplyeeID().toLowerCase())){
@@ -31,50 +39,54 @@ public class EmployeeStorage {
                 stop = true;
             }
         }
-        if(stop == false) {
-            System.out.println("Сотрудника с таким ID нет");
+        if(!stop) {
+             throw new IdNotFoundException();
         }
 
     }
 
 
-    public void searchCompanyName(String companyname){
+    public void searchCompanyName(String companyname) throws CompanyNotFoundException {
         boolean stop = false;
+        boolean check = false;
         for (int i = 0; i < size; i++) {
             if(companyname.toLowerCase().equals(emp[i].getCompany().toLowerCase())){
                 System.out.println(emp[i]);
                 stop = true;
             }
         }
-        if(stop == false) {
-            System.out.println("Сотрудников из этой компании нет в списке");
+
+
+
+        if(!stop) {
+                throw new CompanyNotFoundException();
         }
     }
 
 
-    public void searchNameSurname(String name, String surname){
+    public void searchNameSurname(String name, String surname) throws NameNotFoundException {
         boolean stop = false;
         for (int i = 0; i < size; i++) {
             if(name.toLowerCase().equals(emp[i].getName().toLowerCase()) && surname.toLowerCase().equals(emp[i].getSurname().toLowerCase())){
                 System.out.println(emp[i]);
                 stop = true;}}
 
-        if(stop == false){
-            System.out.println("Сотрудников по такой имени и фамилии нет в списке");
+        if(!stop){
+                throw new NameNotFoundException();
         }
     }
 
-    public void positionsearch(String position){
+    public void positionsearch(PositionLevel position) throws PoisitionNotFoundException {
         boolean stop = false;
         for (int i = 0; i < size; i++) {
-            if(position.toLowerCase().equals(emp[i].getPosition().toLowerCase())){
+            if(position == emp[i].getPosition()){
                 System.out.println(emp[i]);
                 stop = true;
             }
 
         }
-        if(stop == false){
-            System.out.println("Сотрудников на такой должности нет в списке");
+        if(!stop){
+                throw new PoisitionNotFoundException();
         }
     }
 
