@@ -4,4 +4,5 @@ public class myc implements MyInterf{
     public int getNumber(){
         return 100;
     }
+
 }

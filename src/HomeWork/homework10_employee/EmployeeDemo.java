@@ -1,7 +1,7 @@
 package HomeWork.homework10_employee;
 
 import HomeWork.homework10_employee.exception.*;
-import HomeWork.homework10_employee.Enums.PositionLevel;
+import HomeWork.homework10_employee.enums.PositionLevel;
 
 import java.util.Scanner;
 
@@ -47,7 +47,6 @@ public class EmployeeDemo {
             return;
         }
         PositionLevel position = save[lvl];
-
         Employee employee = new Employee(name, surname, id, salary, company, position);
         try {
             storage.add(employee);
@@ -60,35 +59,36 @@ public class EmployeeDemo {
         System.out.println("Введите id сотрудника");
         String id = scanner.nextLine();
         try {
-            storage.idsearch(id);
+            storage.searchById(id);
         } catch (IdNotFoundException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    private static void searchNameCompany(){
+    private static void searchByCompanyName(){
         System.out.println("Введите имя компании для поиска сотрудников");
         String companyname = scanner.nextLine();
         try {
-            storage.searchCompanyName(companyname);
+            storage.searchByCompanyName(companyname);
         } catch (CompanyNotFoundException e) {
             System.out.println(e.getMessage());
+
         }
     }
 
-    private static void searchName(){
+    private static void searchByNameAndUsername (){
         System.out.println("Введите имя сотрудника");
         String name = scanner.nextLine();
         System.out.println("Введите фамилию вашего сотрудника");
         String surname = scanner.nextLine();
         try {
-            storage.searchNameSurname(name, surname);
+            storage.searchByNameAndSurname(name, surname);
         } catch (NameNotFoundException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    private static void searchPosition(){
+    private static void searchByPosition(){
         System.out.println("Выберите должность для поиска:");
         PositionLevel[] levels = PositionLevel.values();
         for (int i = 0; i < levels.length; i++) {
@@ -102,7 +102,7 @@ public class EmployeeDemo {
                 System.out.println("Ошибка! Такой должности нет.");
             }
             PositionLevel position = levels[lvl];
-            storage.positionsearch(position);
+            storage.searchByPosition(position);
         } catch (NumberFormatException e) {
             System.out.println("Ошибка! Нужно ввести число.");
         } catch (PoisitionNotFoundException e) {
@@ -143,12 +143,12 @@ public class EmployeeDemo {
                     searchById();
                     break;
                 case EMPLOYEE_BY_COMPANY_NAME:
-                    searchNameCompany();
+                    searchByCompanyName();
                     break;
                 case SEARCH_BY_NAME_SURNAME:
-                    searchName();
+                    searchByNameAndUsername();
                     break;
                 case SEARCH_BY_POSITION:
-                    searchPosition();
+                    searchByPosition();
                     break;
             }}}}

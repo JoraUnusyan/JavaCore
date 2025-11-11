@@ -1,6 +1,6 @@
 package HomeWork.homework10_employee;
 
-import HomeWork.homework10_employee.Enums.PositionLevel;
+import HomeWork.homework10_employee.enums.PositionLevel;
 import HomeWork.homework10_employee.exception.*;
 
 public class EmployeeStorage {
@@ -31,7 +31,7 @@ public class EmployeeStorage {
         }
     }
 
-    public void idsearch(String id) throws IdNotFoundException {
+    public void searchById(String id) throws IdNotFoundException {
         boolean stop = false;
         for (int i = 0; i < size; i++) {
             if(id.toLowerCase().equals(emp[i].getEmplyeeID().toLowerCase())){
@@ -46,7 +46,7 @@ public class EmployeeStorage {
     }
 
 
-    public void searchCompanyName(String companyname) throws CompanyNotFoundException {
+    public void searchByCompanyName(String companyname) throws CompanyNotFoundException {
         boolean stop = false;
         boolean check = false;
         for (int i = 0; i < size; i++) {
@@ -64,7 +64,7 @@ public class EmployeeStorage {
     }
 
 
-    public void searchNameSurname(String name, String surname) throws NameNotFoundException {
+    public void searchByNameAndSurname(String name, String surname) throws NameNotFoundException {
         boolean stop = false;
         for (int i = 0; i < size; i++) {
             if(name.toLowerCase().equals(emp[i].getName().toLowerCase()) && surname.toLowerCase().equals(emp[i].getSurname().toLowerCase())){
@@ -76,7 +76,7 @@ public class EmployeeStorage {
         }
     }
 
-    public void positionsearch(PositionLevel position) throws PoisitionNotFoundException {
+    public void searchByPosition(PositionLevel position) throws PoisitionNotFoundException {
         boolean stop = false;
         for (int i = 0; i < size; i++) {
             if(position == emp[i].getPosition()){

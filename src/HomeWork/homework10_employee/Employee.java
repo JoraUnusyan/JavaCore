@@ -1,6 +1,6 @@
 package HomeWork.homework10_employee;
 
-import HomeWork.homework10_employee.Enums.PositionLevel;
+import HomeWork.homework10_employee.enums.PositionLevel;
 
 import java.util.Objects;
 
