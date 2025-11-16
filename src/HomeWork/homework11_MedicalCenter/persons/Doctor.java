@@ -1,8 +1,9 @@
 package HomeWork.homework11_MedicalCenter.persons;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Doctor extends Human {
+public class Doctor extends Human implements Serializable {
     private String email;
     private String profession;
 

@@ -1,9 +1,10 @@
 package HomeWork.homework11_MedicalCenter.persons;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Patient extends Human {
+public class Patient extends Human implements Serializable {
     private Doctor doctor;
     private LocalDate registerDateTime;
 

@@ -9,13 +9,14 @@ import HomeWork.homework11_MedicalCenter.medicalstorage.MedicalCenterStorage;
 import HomeWork.homework11_MedicalCenter.persons.Doctor;
 import HomeWork.homework11_MedicalCenter.persons.Patient;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Scanner;
 
 import static HomeWork.homework11_MedicalCenter.demo.DemoMethods.medicalCenterStorage;
 import static HomeWork.homework11_MedicalCenter.demo.DemoMethods.scanner;
 
-public class MedicalCenterDemo {
+public class MedicalCenterDemo{
     public static void main(String[] args) {
         boolean isRun = true;
         while(isRun){

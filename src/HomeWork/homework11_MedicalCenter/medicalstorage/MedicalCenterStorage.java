@@ -1,5 +1,6 @@
 package HomeWork.homework11_MedicalCenter.medicalstorage;
 
+import HomeWork.homework11_MedicalCenter.fileUtil.FileUtil;
 import HomeWork.homework11_MedicalCenter.medical_exceptions.IdDuplicateException;
 import HomeWork.homework11_MedicalCenter.medical_exceptions.IsNotFoundException;
 import HomeWork.homework11_MedicalCenter.persons.Doctor;
@@ -11,21 +12,36 @@ import java.io.IOException;
 
 public class MedicalCenterStorage implements MedicalMethods{
 
-    private Doctor[] doctor =  new Doctor[20];
-    private Patient[] patient = new Patient[20];
-    private int patSize = 0;
-    private int docSize = 0;
+    private Doctor[] doctor;
+    private Patient[] patient;
+    private int patSize;
+    private int docSize;
 
-    public void addDoctor(Doctor doc) throws IdDuplicateException {
+
+
+    public MedicalCenterStorage() {
+        this.doctor = FileUtil.deseralizeDoctorData();
+        this.docSize = doctor.length;
+        this.patient = FileUtil.deserializePatients();
+        this.patSize = patient.length;
+    }
+
+    public void checkDoctorID(Doctor doc){
         for (int i = 0; i < docSize; i++) {
             if(doctor[i].getId().toLowerCase().equals(doc.getId().toLowerCase())){
                 throw new IdDuplicateException();
             }
         }
+    }
+
+    public void addDoctor(Doctor doc) throws IdDuplicateException {
+        checkDoctorID(doc);
         if(docSize == doctor.length){
             extendDoc();
         }
         doctor[docSize++] =  doc;
+
+        FileUtil.serializeDoctorData(doctor, docSize);
     }
 
 
@@ -34,6 +50,8 @@ public class MedicalCenterStorage implements MedicalMethods{
             extendPat();
         }
         patient[patSize++] =  p;
+        FileUtil.serializePatientData(patient, patSize);
+
     }
 
     private void extendDoc(){
@@ -71,11 +89,11 @@ public class MedicalCenterStorage implements MedicalMethods{
                 }
                 docSize--;
             }
-
         }
         if(!isRun){
             throw new IsNotFoundException();
         }
+        FileUtil.serializeDoctorData(doctor, docSize);
     }
 
     public void changeDoctorById(String id, String name, String surname, String phoneNumber, String email, String profession) throws IsNotFoundException {

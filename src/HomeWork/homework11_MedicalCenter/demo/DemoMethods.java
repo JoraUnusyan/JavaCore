@@ -1,5 +1,6 @@
 package HomeWork.homework11_MedicalCenter.demo;
 
+import HomeWork.homework11_MedicalCenter.fileUtil.FileUtil;
 import HomeWork.homework11_MedicalCenter.medical_exceptions.IdDuplicateException;
 import HomeWork.homework11_MedicalCenter.medical_exceptions.IsNotFoundException;
 import HomeWork.homework11_MedicalCenter.medicalstorage.MedicalCenterStorage;
@@ -15,7 +16,7 @@ public class DemoMethods {
     public static Scanner scanner = new Scanner(System.in);
     public static MedicalCenterStorage medicalCenterStorage = new MedicalCenterStorage();
 
-    public static void addDoctor(){
+    public static Doctor saveDoctorInfo(){
         System.out.println("Введите ID доктора ");
         String docID = scanner.nextLine();
         System.out.println("Введите имя Доктора ");
@@ -28,8 +29,11 @@ public class DemoMethods {
         String docEmail = scanner.nextLine();
         System.out.println("Введите профессию Доктора ");
         String docProfession = scanner.nextLine();
+        return new Doctor(docID, docName, docSurName, docPhoneNumber, docEmail, docProfession);
+    }
 
-        Doctor doctor = new Doctor(docID, docName, docSurName, docPhoneNumber, docEmail, docProfession);
+    public static void addDoctor(){
+        Doctor doctor = saveDoctorInfo();
         try {
             medicalCenterStorage.addDoctor(doctor);
             System.out.println("Доктор был успешно добавлен в список");
@@ -146,7 +150,6 @@ public class DemoMethods {
             }
 
         } while(!repeat);
-
     }
 
 }

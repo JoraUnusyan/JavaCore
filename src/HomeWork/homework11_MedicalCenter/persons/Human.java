@@ -1,9 +1,10 @@
 package HomeWork.homework11_MedicalCenter.persons;
 
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Human {
+public class Human implements Serializable {
     protected String id;
     protected String name;
     protected String surname;
